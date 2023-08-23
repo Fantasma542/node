@@ -1,19 +1,17 @@
-const fs = require("fs");
+const fs = require("fs/promises");
 
 function writeAndRead(path, obj) {
-    fs.writeFile(path, JSON.stringify(obj), (err) => {
-        if (err) {
-            console.log(`Error: ${err}`);
-        }
+    fs.writeFile(path, JSON.stringify(obj))
+.then(()=> {
+    return fs.readFile(path, 'utf8')
+})
+.then( (data)=> {
+    console.log(JSON.parse(data))
+})
+.catch((err) =>{
+    console.log(err);
+})
 
-            fs.readFile(path, "utf-8", (err, data) => {
-                if (!err) {
-                    console.log(data);
-                } else {
-                    console.log(`Error: ${err}`);
-                }
-            });
-    });
 }
 
 module.exports = writeAndRead;
