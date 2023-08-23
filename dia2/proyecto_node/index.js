@@ -1,7 +1,7 @@
 const writeAndRead = require("./writeAndReadObject");
-const readConsole = require("./readConsole");
+const pregunta = require("./readConsole")
 
-readConsole((data) => {
+pregunta((data) => {
     console.log(data);
     writeAndRead("reto4.json", data);
 });

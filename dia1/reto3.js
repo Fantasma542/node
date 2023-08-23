@@ -1,5 +1,6 @@
-const fs = require("fs/promises");
+const fs = require("fs");
 const readline = require("readline");
+let rl = readline.createInterface(process.stdin, process.stdout);
 
 let object = {
     name: "",
@@ -7,36 +8,31 @@ let object = {
     age: null
 };
 
-function pregunta(){
-    const question = new Promise((resolve, reject) =>{
-        const rl = readline.createInterface(process.stdin, process.stdout)
-        rl.question("¿Cual es tu nombre? ", (nombre)=>{
-            resolve(object.name = nombre)
-            rl.question("¿Cual es tu apellido? ", (apellido) => {
-                resolve(object.surname = apellido) 
-                rl.question("¿Cual es tu edad? ", (edad) =>{
-                    resolve(object.age = edad)
-                    rl.close()
-                    const archivoJson = "reto3.json"
-
-
-                    /////////////promesas
-                    fs.writeFile(archivoJson, JSON.stringify(object))
-                    .then(()=> {
-                        return fs.readFile(archivoJson, 'utf8')
-                    })
-                    .then( (data)=> {
-                        console.log(JSON.parse(data))
-                    })
-                    .catch((err) =>{
-                        console.log(err);
-                    })
-                                })
-                        })
-                    })
+rl.question("¿Cual es tu nombre? ", (nombre) => {
+    object.name = nombre;
+    
+    rl.question("¿Cual es tu apellido? ", (apellido) => {
+        object.surname = apellido;
+    
+        rl.question("¿Cual es tu edad? ", (edad) => {
+            object.age = edad;
+            rl.close();
+            
+            const archivoJson = "reto3.json";
+            
+            fs.writeFile(archivoJson, JSON.stringify(object), (err) => {
+                if (err) {
+                    console.log(`Error: ${err}`);
+                }
+                    
+                fs.readFile(archivoJson, "utf-8", (err, data) => {
+                    if (!err) {
+                            console.log(data);
+                    } else {
+                            console.log(`Error: ${err}`);
                     }
-    ) 
-return question
-}
-pregunta()
-
+                });
+            });
+        });
+    });
+});
