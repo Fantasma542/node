@@ -21,6 +21,8 @@ function pregunta(){
 
 
                     /////////////promesas
+
+                    //////////Then y catch
                     fs.writeFile(archivoJson, JSON.stringify(object))
                     .then(()=> {
                         return fs.readFile(archivoJson, 'utf8')
@@ -31,6 +33,15 @@ function pregunta(){
                     .catch((err) =>{
                         console.log(err);
                     })
+
+                    ///////////////async y await
+                    async function asyncAwait(){
+                        fs.writeFile(archivoJson, JSON.stringify(object))
+                        const nuevo = await fs.readFile(archivoJson, 'utf8')
+                        console.log(JSON.parse(nuevo))
+                        }
+                        
+                        asyncAwait()
                                 })
                         })
                     })
