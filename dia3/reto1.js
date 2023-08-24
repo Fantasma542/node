@@ -7,19 +7,12 @@ app.get("/", function (req, res){
     console.log(req.method);
     console.log(req.headers["user-agent"])
 
-    let aplicationJSON = {
-        ok: true,
-        message: "Recibido!"
-    }
+    res.status(200).json({ok: true, message: "Recibido!"})
 });
 
 app.get("/bye", function(req, res){
-    let aplicationJSON = {
-        ok:true,
-        message: "Adios!"
-    }
+    res.status(200).json({ok: true, message: "Adios!"})
 })
-
 
 
 app.listen(3000)
