@@ -11,7 +11,6 @@ app.get("/", function (req, res){
         ok: true,
         message: "Recibido!"
     }
-    res.status(200).json(aplicationJSON)
 });
 
 app.get("/bye", function(req, res){
@@ -19,7 +18,6 @@ app.get("/bye", function(req, res){
         ok:true,
         message: "Adios!"
     }
-    res.status(200).json(aplicationJSON)
 })
 
 
