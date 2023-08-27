@@ -6,7 +6,7 @@ let object ={
     age: 18
 }
 
-const archivoJson = "reto2.json"
+const archivoJson = "reto2Then.json"
 
 
 /////////////promesas
@@ -22,17 +22,6 @@ fs.writeFile(archivoJson, JSON.stringify(object))
 .catch((err) =>{
     console.log(err);
 })
-
-/////// ASYNC Y AWAIT
-
-async function asyncAwait(){
-fs.writeFile(archivoJson, JSON.stringify(object))
-const nuevo = await fs.readFile(archivoJson, 'utf8')
-console.log(JSON.parse(nuevo))
-}
-
-asyncAwait()
-
 
 
 
