@@ -17,7 +17,7 @@ function pregunta(){
                 rl.question("¿Cual es tu edad? ", (edad) =>{
                     resolve(object.age = edad)
                     rl.close()
-                    const archivoJson = "reto3.json"
+                    const archivoJson = "reto3Then.json"
 
 
                     /////////////promesas
@@ -33,15 +33,6 @@ function pregunta(){
                     .catch((err) =>{
                         console.log(err);
                     })
-
-                    ///////////////async y await
-                    async function asyncAwait(){
-                        fs.writeFile(archivoJson, JSON.stringify(object))
-                        const nuevo = await fs.readFile(archivoJson, 'utf8')
-                        console.log(JSON.parse(nuevo))
-                        }
-                        
-                        asyncAwait()
                                 })
                         })
                     })
