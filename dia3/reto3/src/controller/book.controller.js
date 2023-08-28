@@ -44,6 +44,7 @@ function postBook(req, res){
     let id_book= req.body.id_book
         let newBook = new Book(id_book, title, author)
         book.push(newBook);
+        console.log(req.body)
         let respuesta;
         respuesta = {error: false, codigo: 200, mensaje: "Libro creado", data: newBook}
         res.send(respuesta);
