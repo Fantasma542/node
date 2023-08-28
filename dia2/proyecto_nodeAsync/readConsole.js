@@ -1,7 +1,7 @@
 const readline = require("readline");
 
 //////////////////////////promesass 
-//////////////then y catch
+//////////////async y await
 
 function read(pregunta) {
     const question =  new Promise((resolve, reject) => {
